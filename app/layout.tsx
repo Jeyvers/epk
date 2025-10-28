@@ -9,7 +9,7 @@ const openSans = Open_Sans({
 });
 
 export const metadata: Metadata = {
- title: "Jeyi - Artist, Singer, Songwriter & Rapper",
+ title: "Jeyi - Artist (Singer, Songwriter & Rapper)",
  description:
   "Hello! I'm glad you found me :) I'm Jeyi, a rapper, singer, and songwriter",
 };
