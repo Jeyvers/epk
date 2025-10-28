@@ -10,13 +10,13 @@ import Image from "next/image";
 export default function Summary() {
  return (
   <div>
-   <div className="relative w-full max-w-md lg:max-w-4xl my-48 mx-auto">
+   <div className="relative w-full max-w-md lg:max-w-4xl my-40 lg:my-48 mx-auto px-6 md:px-0">
     <Avatar className="size-48 absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
      <AvatarImage src="/images/pic.jpg" className="object-cover" alt="Jeyi" />
      <AvatarFallback>J</AvatarFallback>
     </Avatar>
     {/* Profile Section */}
-    <div className="text-center p-8 bg-[#353535] pt-32 mx-auto">
+    <div className="text-center p-8 md:bg-[#353535] pt-32 mx-auto">
      {/* Name */}
      <h1 className="text-2xl font-bold text-white mb-2">Jeyi</h1>
 
@@ -38,7 +38,7 @@ export default function Summary() {
     </div>
 
     {/* Social Icons */}
-    <div className="flex justify-center pb-6 gap-3 flex-wrap bg-[#353535]">
+    <div className="flex justify-center lg:px-0 pb-6 gap-2 md:gap-3 flex-wrap md:bg-[#353535]">
      {socialLinks.map(({ name, icon, href }) => (
       <a
        key={name}
@@ -64,7 +64,7 @@ export default function Summary() {
     </div>
 
     {/* Links Section */}
-    <div className="px-2 grid grid-cols-2 gap-6">
+    <div className="px-2 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
      {links.map(({ name, href, icon, label, linkText }) => (
       <a
        key={name}
@@ -78,9 +78,9 @@ export default function Summary() {
         height={60}
         src={`/images/social-media-icons/big/${icon}.svg`}
         alt={`${name} icon`}
-        className="z-10 rounded-xs absolute mr-4 -left-3 object-cover group-hover:-translate-y-1 transition"
+        className="z-10 w-10 h-10 md:w-[60px] md:h-[60px] md:rounded-xs absolute mr-4 -left-2 md:-left-3 object-cover group-hover:-translate-y-1 transition"
        />
-       <div className="overflow-hidden flex items-center bg-[#353535] py-4 pr-6 pl-16 flex-1">
+       <div className="overflow-hidden flex items-center justify-between bg-[#353535] py-4 pr-6 pl-12 md:pl-16 flex-1">
         <div
          className="absolute inset-0 bg-cover bg-center blur-3xl opacity-30"
          style={{
@@ -88,8 +88,10 @@ export default function Summary() {
          }}
         ></div>
 
-        <div className="flex-1">
-         <div className="text-white font-semibold">{label}</div>
+        <div className="flex-1 max-w-[200px] md:max-w-none">
+         <div className="text-white font-semibold text-sm md:text-base">
+          {label}
+         </div>
          <div className="text-neutral-400 text-xs truncate mt-0.5">
           {linkText}
          </div>

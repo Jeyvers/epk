@@ -1,5 +1,10 @@
-import { redirect } from "next/navigation";
+import Summary from "./(pages)/_summary/page";
+import PagesLayout from "./(pages)/layout";
 
 export default function Home() {
- redirect("/summary");
+ return (
+  <PagesLayout>
+   <Summary />
+  </PagesLayout>
+ );
 }
