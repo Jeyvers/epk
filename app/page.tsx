@@ -18,7 +18,7 @@ export default function Home() {
      <div className="bg-white/30 h-[0.5px] absolute top-7 w-full left-0" />
     </Link>
    </div>
-   {hasPromotionBanner && <div className="h-10 md:h-14" />}
+   {hasPromotionBanner && <div className="h-10 md:h-12" />}
 
    <Summary />
   </>
