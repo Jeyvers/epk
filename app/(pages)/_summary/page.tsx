@@ -6,10 +6,11 @@ import {
 import { links, socialLinks } from "@/lib/links";
 import { ArrowRight, MailIcon } from "lucide-react";
 import Image from "next/image";
+import SummaryLayout from "./layout";
 
 export default function Summary() {
  return (
-  <div>
+  <SummaryLayout>
    <div className="relative w-full max-w-md lg:max-w-4xl my-40 lg:my-48 mx-auto px-6 md:px-0">
     <Avatar className="size-48 absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
      <AvatarImage src="/images/pic.jpg" className="object-cover" alt="Jeyi" />
@@ -106,6 +107,6 @@ export default function Summary() {
      ))}
     </div>
    </div>
-  </div>
+  </SummaryLayout>
  );
 }

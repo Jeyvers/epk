@@ -1,11 +1,25 @@
 import type { Metadata } from "next";
-import { Open_Sans } from "next/font/google";
+import {
+ Lovers_Quarrel,
+ Open_Sans,
+ Zalando_Sans_Expanded,
+} from "next/font/google";
 
 import "./globals.css";
 
 const openSans = Open_Sans({
  variable: "--font-open-sans",
  subsets: ["latin"],
+});
+
+const loversQuarrel = Lovers_Quarrel({
+ variable: "--font-lovers-quarrel",
+ subsets: ["latin"],
+ weight: "400",
+});
+
+const zalando = Zalando_Sans_Expanded({
+ variable: "--font-zalando",
 });
 
 export const metadata: Metadata = {
@@ -21,7 +35,11 @@ export default function RootLayout({
 }>) {
  return (
   <html lang="en">
-   <body className={`${openSans.className} antialiased dark`}>{children}</body>
+   <body
+    className={`${openSans.className} ${loversQuarrel.variable} ${zalando.variable} antialiased dark`}
+   >
+    {children}
+   </body>
   </html>
  );
 }
