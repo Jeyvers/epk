@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const SingleLyrics = () => {
  return (
-  <div className="flex flex-col items-center px-4 my-20 max-w-xl mx-auto text-center text-gray-100">
+  <div className="flex flex-col items-center px-4 my-16 max-w-xl mx-auto text-center text-gray-100">
    <Image
     src="/images/memories.jpg"
     alt="Treasures and Palettes of Gold"
