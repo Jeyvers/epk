@@ -6,10 +6,15 @@ import {
 import { links, socialLinks } from "@/lib/links";
 import { ArrowRight, MailIcon } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 import SummaryLayout from "./layout";
 
 export default function Summary() {
+ const promotion = {
+  show: true,
+  text: "presave my new release",
+  link: "https://distrokid.com/hyperfollow/jeyi/lets-fix-this-2",
+ };
+
  return (
   <SummaryLayout>
    <div className="relative w-full max-w-md lg:max-w-4xl my-40 lg:my-48 mx-auto">
@@ -22,18 +27,20 @@ export default function Summary() {
      {/* Name */}
 
      <h1 className="text-2xl font-bold text-white mb-2 px-10">Jeyi</h1>
-     <div className="top-0 w-full bg-purple-700 z-50 text-center text-3xl py-1 md:py-0 md:text-[40px] font-lovers-quarrel my-3">
-      <Link
-       href="/songwriter/treasures-and-palettes-of-gold"
-       className="relative w-fit mx-auto animate-in"
-      >
-       <span>rock the city live with me</span>
-       <span className="absolute left-0">rock the city live with me</span>
-       <span className="absolute left-0">rock the city live with me</span>
-       <span className="absolute left-0">rock the city live with me</span>
-       <div className="bg-white/30 h-[0.5px] absolute top-7 w-full left-0" />
-      </Link>
-     </div>
+     {promotion.show && (
+      <div className="top-0 w-full bg-sky-700 z-50 text-center text-3xl py-1 md:py-0 md:text-[40px] font-lovers-quarrel my-4">
+       <a
+        target="_blank"
+        href={promotion.link}
+        className="relative w-fit mx-auto animate-in"
+       >
+        <span>{promotion.text}</span>
+        <span className="absolute left-0">{promotion.text}</span>
+        <span className="absolute left-0">{promotion.text}</span>
+        <div className="bg-white/30 h-[0.5px] absolute top-7 w-full left-0" />
+       </a>
+      </div>
+     )}
      <div className="px-10">
       {/* Bio */}
       <p className="text-gray-300 text-sm mb-2">Hi, I'm glad you found me :)</p>
