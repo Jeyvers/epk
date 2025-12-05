@@ -11,8 +11,8 @@ import SummaryLayout from "./layout";
 export default function Summary() {
  const promotion = {
   show: true,
-  text: "presave my new release",
-  link: "https://distrokid.com/hyperfollow/jeyi/lets-fix-this-2",
+  text: "listen to my latest release",
+  link: "https://meetjeyi.fanlink.tv/lets-fix-this",
  };
 
  return (
