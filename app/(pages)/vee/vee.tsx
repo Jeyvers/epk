@@ -143,9 +143,33 @@ const SLIDESHOW_IMAGES = [
   "/vee/slideshow/11.jpg",
   "/vee/slideshow/12.jpg",
   "/vee/slideshow/23.jpg",
+  "/vee/slideshow/13010798_145896072476580_1482026528761536040_n.jpg",
+  "/vee/slideshow/213a0066-f3ed-4c57-92f6-7809628b412c.jpg",
+  "/vee/slideshow/3DFE43AC-D04B-4BB9-BF51-8F70054A8B80.JPG",
+  "/vee/slideshow/4bee40ac-d8fd-46d1-b9ce-c36ff7d8a084.jpg",
+  "/vee/slideshow/818ACC44-7DE2-459F-80C8-1B2F7F7D1B97.JPG",
+  "/vee/slideshow/965445F8-4563-42BB-AAFF-B9D220DE9414.JPG",
+  "/vee/slideshow/9DC7A7E9-DBA0-45F8-A82B-88EF0125BFBC.JPG",
+  "/vee/slideshow/A0DB99C3-24D9-4BE5-A108-FDCE9757B611.JPG",
+  "/vee/slideshow/DDE59162-F526-4DC1-BBF1-69533E4639B4.JPG",
   "/vee/slideshow/IMG-20211026-WA0026.jpeg",
   "/vee/slideshow/IMG-20211213-WA0027.jpg",
   "/vee/slideshow/IMG-20220126-WA0022.jpg",
+  "/vee/slideshow/IMG-20220222-WA0028.jpeg",
+  "/vee/slideshow/IMG-20220912-WA0053.jpeg",
+  "/vee/slideshow/IMG-20220917-WA0077.jpg",
+  "/vee/slideshow/IMG_0301.PNG",
+  "/vee/slideshow/IMG_0915.JPG",
+  "/vee/slideshow/IMG_1246.JPG",
+  "/vee/slideshow/IMG_1923.JPG",
+  "/vee/slideshow/IMG_20220130_121641.jpg",
+  "/vee/slideshow/IMG_20220320_084028.jpg",
+  "/vee/slideshow/IMG_20220912_082706_565.jpg",
+  "/vee/slideshow/IMG_20220914_113728_147.jpg",
+  "/vee/slideshow/IMG_20221106_102139_730.jpg",
+  "/vee/slideshow/IMG_2728.PNG",
+  "/vee/slideshow/IMG_6158.PNG",
+  "/vee/slideshow/Screenshot_20211201-162327.png",
 ];
 
 const SLIDESHOW_IMAGE_DWELL_MS = 2200;
@@ -159,7 +183,7 @@ const indexOfSlideshowSlide = SLIDES.findIndex((s) => s.type === "slideshow");
 const DWELL_MIN_MS = 3500;
 const DWELL_MAX_MS = 10000;
 const MS_PER_WORD = 300;
-const DWELL_SCALE = 3 / 4;
+const DWELL_SCALE = 1.2; // Slightly slower: slides stay ~20% longer
 
 function getDwellMs(slide: (typeof SLIDES)[number]): number {
   let ms: number;
@@ -188,8 +212,9 @@ function shuffle<T>(arr: T[], seed: number): T[] {
 }
 
 const shuffledAll = shuffle([...SLIDESHOW_IMAGES], 42);
-const SIDE_IMAGES = shuffledAll.slice(0, 6);
-const SLIDESHOW_ONLY_IMAGES = shuffledAll.slice(6, 12);
+// Use all 12 images for both side panel and main slideshow; they repeat/cycle.
+const SIDE_IMAGES = shuffledAll;
+const SLIDESHOW_ONLY_IMAGES = shuffledAll;
 
 function getSideImageForSlide(slideIndex: number): string {
   return SIDE_IMAGES[slideIndex % SIDE_IMAGES.length];
@@ -752,7 +777,7 @@ function SongsSlide({
               controls
               playsInline
               preload="metadata"
-              onPlay={i === 2 ? () => handleVideo3Play() : undefined}
+              onPlay={i === 2 ? handleVideo3Play : undefined}
             />
           </div>
         ))}
@@ -767,7 +792,7 @@ function SongsSlide({
         <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
           <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.48-4.32 0-12.96-2.28-12.96-6.72 0-.84.36-1.56.96-2.04.24-.18.54-.24.84-.24.3 0 .6.06.84.24.6.48.96 1.2.96 2.04 0 4.44-8.64 6.72-12.96 6.72-.36 0-.66-.12-1.02-.48-.24-.36-.3-.84-.06-1.2.24-.36.72-.48 1.08-.24 3.96 2.28 11.04 2.28 15 0 .36-.24.84-.12 1.08.24.24.72.36 1.08.06z" />
         </svg>
-        Listen on Spotify
+        Listen on Spotify: {spotifyLabel}
       </a>
     </motion.div>
   );
