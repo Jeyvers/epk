@@ -502,7 +502,11 @@ export default function Vee() {
         <div
           className={
             fullWidthContent
-              ? "flex min-h-full w-full flex-col items-center justify-center px-6 py-16 sm:px-10 sm:py-20 md:px-16 lg:px-24"
+              ? `flex min-h-full w-full flex-col px-6 py-16 sm:px-10 sm:py-20 md:px-16 lg:px-24 ${
+                  slide?.type === "songs"
+                    ? "items-center justify-start overflow-y-auto overflow-x-hidden min-h-0"
+                    : "items-center justify-center"
+                }`
               : "flex w-1/2 flex-col items-start justify-center pl-4 pr-6 py-16 sm:pl-6 sm:pr-8 sm:py-20"
           }
         >
@@ -736,14 +740,14 @@ function SongsSlide({
       <p className="font-sans text-lg text-amber-100/90 sm:text-xl">
         Watch the videos, then open the second song below.
       </p>
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-row flex-wrap justify-center gap-4">
         {videos.map((src, i) => (
-          <div key={src} className="space-y-1">
-            <span className="font-sans text-sm text-amber-200/70">
+          <div key={src} className="flex flex-col items-center gap-2">
+            <span className="font-sans text-sm font-medium text-amber-200/90">
               Video {i + 1}
             </span>
             <video
-              className="w-full max-w-lg rounded-xl bg-neutral-900"
+              className="w-full max-w-[min(28vw,320px)] rounded-xl bg-neutral-900 object-contain aspect-video"
               src={src}
               controls
               playsInline
@@ -763,7 +767,7 @@ function SongsSlide({
         <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
           <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.48-4.32 0-12.96-2.28-12.96-6.72 0-.84.36-1.56.96-2.04.24-.18.54-.24.84-.24.3 0 .6.06.84.24.6.48.96 1.2.96 2.04 0 4.44-8.64 6.72-12.96 6.72-.36 0-.66-.12-1.02-.48-.24-.36-.3-.84-.06-1.2.24-.36.72-.48 1.08-.24 3.96 2.28 11.04 2.28 15 0 .36-.24.84-.12 1.08.24.24.72.36 1.08.06z" />
         </svg>
-        Listen on Spotify: {spotifyLabel}
+        Listen on Spotify
       </a>
     </motion.div>
   );
