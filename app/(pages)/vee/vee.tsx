@@ -456,10 +456,11 @@ export default function Vee() {
         ))}
       </div>
 
-      {/* Layout */}
-      <button
-        type="button"
-        className="absolute inset-0 z-10 flex w-full"
+      {/* Layout: div so inner buttons (carousel dots, Spotify link) stay clickable */}
+      <div
+        role="button"
+        tabIndex={0}
+        className="absolute inset-0 z-10 flex w-full cursor-default"
         onClick={(e) => {
           startAudioIfNeeded();
           const t = e.currentTarget.getBoundingClientRect();
@@ -471,6 +472,10 @@ export default function Vee() {
             if (x < t.width * 0.35) goPrev();
             else if (x > t.width * 0.65) goNext();
           }
+        }}
+        onKeyDown={(e) => {
+          if (e.key === "ArrowLeft") goPrev();
+          else if (e.key === "ArrowRight") goNext();
         }}
         aria-label="Next or previous slide"
       >
@@ -622,7 +627,7 @@ export default function Vee() {
             )}
           </AnimatePresence>
         </div>
-      </button>
+      </div>
 
       {/* Nav */}
       <div className="absolute bottom-16 left-0 right-0 z-20 flex items-center justify-between px-4 sm:bottom-20 sm:px-8">
@@ -765,7 +770,10 @@ function SongsSlide({
       <p className="font-sans text-lg text-amber-100/90 sm:text-xl">
         Watch the videos, then open the second song below.
       </p>
-      <div className="flex flex-row flex-wrap justify-center gap-4">
+      <div
+        className="flex flex-row flex-wrap justify-center gap-4"
+        onClick={(e) => e.stopPropagation()}
+      >
         {videos.map((src, i) => (
           <div key={src} className="flex flex-col items-center gap-2">
             <span className="font-sans text-sm font-medium text-amber-200/90">
